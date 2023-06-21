@@ -1,27 +1,33 @@
+//Program to find the min and max num in the array
+
+#include <stdio.h>
 
 
-#include<stdio.h>
-
-// program to find minimum and maximum values of 1-D array.
-
+ 
 int main()
 {
-    int arr[] = {64, 84, 20, 36, 12, 90, 72, 10, 45, 56};
-    int len = sizeof(arr) / sizeof(arr[0]);
-    int min, max= arr[0];
-
-    for(int i= 0; i<len; i++)
+    int a[1000],i,n,min,max;
+   
+    printf("Enter size of the array : ");
+    scanf("%d",&n);
+ 
+    printf("Enter elements in array : ");
+    for(i=0; i<n; i++)
     {
-        if(arr[i] < min)
-        {
-            min =arr[i];
-        }
-        if(arr[i]> max)
-        {
-            max= arr[i];
-        }
+        scanf("%d",&a[i]);
     }
-    printf("Minimum value: %d\n", min);
-    printf("Maximum value: %d", max);
-    
+ 
+    min=max=a[0];
+    for(i=1; i<n; i++)
+    {
+         if(min>a[i])
+		  min=a[i];   
+		   if(max<a[i])
+		    max=a[i];       
+    }
+     printf("minimum of array is : %d",min);
+          printf("\nmaximum of array is : %d",max);
+
+
+    return 0;
 }
