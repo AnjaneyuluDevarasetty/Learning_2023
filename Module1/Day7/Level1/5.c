@@ -18,25 +18,36 @@ int searchByName(const struct Student* students, int size, const char* name) {
 }
 
 int main() {
-    struct Student students[] = {
-        {1001, "John", 85.5},
-        {1002, "Alice", 92.3},
-        {1003, "Bob", 78.9},
-        {1004, "Sarah", 95.2}
-    };
-    int size = sizeof(students) / sizeof(students[0]);
+    struct Student students[100];  // Assuming a maximum of 100 students
+    int size = 0;  // Variable to track the number of students entered
+
+    printf("Enter the number of students: ");
+    scanf("%d", &size);
+
+    for (int i = 0; i < size; i++) {
+        printf("\nStudent %d:\n", i+1);
+
+        printf("Enter roll number: ");
+        scanf("%d", &students[i].rollno);
+
+        printf("Enter name: ");
+        scanf("%s", students[i].name);
+
+        printf("Enter marks: ");
+        scanf("%f", &students[i].marks);
+    }
 
     char searchName[20];
-    printf("Enter the name to search: ");
+    printf("\nEnter the name to search: ");
     scanf("%s", searchName);
 
     int index = searchByName(students, size, searchName);
 
     if (index != -1) {
-        printf("Student found at index %d:\n", index);
+        printf("\nStudent found at index %d:\n", index);
         printf("Roll No: %d, Name: %s, Marks: %.2f\n", students[index].rollno, students[index].name, students[index].marks);
     } else {
-        printf("Student not found.\n");
+        printf("\nStudent not found.\n");
     }
 
     return 0;
